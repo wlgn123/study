@@ -1,0 +1,192 @@
+javac -encoding UTF-8 ~~~.java
+java =Dfile.encoding=UTF-8 ~~
+
+git checkout -b ~~~
+브랜치 생성하고 바로 이동
+
+git commit -am ~~
+한번 add commit 된후
+다시 수정된 파일 add 후 커밋
+
+git config --global user.name ""
+git config --global user.email ""
+
+git init
+git branch ~~
+git checkout ~~
+
+branch를 만드는 이유는
+원본을 회손하지 않기 위해서.
+
+git branch -a 
+로컬 저장소와 원격 저장소에 존재하는 브랜치 모두 확인 가능
+
+토픽 브랜치
+	기능을 구성하기위해 브랜치를 생성 후 작업
+	작업한 후 머지
+git checkout -
+이전 브렌치로 이동
+
+git merge
+패스트포워드 머지 : 머지 기록을 남기지 않고 머지한다.
+
+git merge --no-ff jobA
+머지기록을 남기고 싶을경우
+
+git log --graph
+
+git branch -d jobA
+브렌치 삭제하기.
+변경사항이있는 브렌치일 경우 에러가 뜨면서 안지워짐
+git branch -D ~~
+강제삭제한다.
+
+
+branch 충돌
+joba 에서 파일 변경 후 커밋
+마스터에서 joba 머지
+
+jobb 에서 변경후 
+
+git clone 주소
+
+git push
+
+이메일
+
+git rm --cached
+
+git fork
+
+git remote add 저장소별칭 저장소 url
+
+git remote -v
+설정된  url 확인
+여러개의 저장소로 연결 가능
+
+git push pen master
+
+git remote rm 별칭
+연결된 저장소를 끊는다.
+
+git remote renmae 현이름 바꿀이름
+별칭 변경
+
+git fetch 별칭 리모트브랜치
+원격저장소에 있는내용으로 업데이트
+(가져오긴 하지만 merge 해주지않기 때문에 유저가 merge 해줘야한다.)
+
+git pull 별칭 master branch
+fetch+merge 기능
+
+git push origin --all
+
+git push 별칭 --delete 브렌치 이름
+
+git checkout -b 원하는이름 원격별칭/원격브랜치명
+
+
+git commit --amend
+로그 기록 변경 하기
+
+git checkout -- 파일명
+파일을 스테이징에 올리고
+다시 파일을 변경하면
+modified sample
+과
+add되지않은 sample
+이 존재하게 되는데
+git checkout -- 파일명
+을 사용하게되면
+작업영역에 있는 sample 은 없어지고
+스테이징 영역에 있는걸로 변경된다
+(작업 영역 취소)
+
+git checkout HEAD file
+스테이지 영역과
+작업영역에 있는 것 모두 commit했을때로 돌아간다.
+(작업영역과 스테이지영역 둘다 취소)
+
+git reset -- 파일명
+(add한것을 취소한다.)
+
+--hard 작업디렉토리 취소 스테이징 취소 커밋 취소
+--mixed            유지          취소      취소
+--soft                                     취소
+
+log의 커밋 아이디의 앞 4자리
+git reset --soft 4자리
+
+소프트 방식은 커밋 기록만 사라지고
+내용이 변하진 않는다.
+
+git reset --hard ORIG_HEAD
+리셋한것을 다시 복원시킨다.
+
+git reset --hard HEAD~2
+최근 커밋 두개를 취소하고 작업디렉토리 스테이징 에이리어, 커밋내역 모두 취소
+
+git reset --soft HEAD~3
+소프트방식으로 최근 커밋3개를 취소하고 작업디렉토리와 스테이징 ㅔ어리어는 유지 커밋내역만 취소한다.
+
+git revert HEAD
+최신 커밋 이력은 유지하고 내용을 취소한커밋을 추가한다.
+결과적으로 최신커밋 이전으로 내용을 복원하고 이력은 유지된다.
+
+git stash
+
+git stash list
+stash의 리스트
+git stash pop
+브렌치 변경후 하게되면
+stash 리스트에있는 기록 하나를 가져오고 리스트에서 제거한다.
+
+git stash drop
+stash 리스트에 최상단 하나를 제거한다.
+
+git stash apply
+pop과는 다르게 stash 하나를 가져오지만
+제거하진 않는다.
+
+11hour
+repl.it
+
+http:www.gitignore.io
+
+jerry10004/notice
+
+vi 명령어
+
+gg 문서 가장위로 이동
+shift + g 문서 가장 밑으로
+
+w : 현재커서의 다음단어로 이동
+W : 현재 커서라인의 가장 끝으로 이동
+
+b : 현재커서의 전 단어로 이동
+B : 현재 커서라인의 가장 앞으로 이동
+
+yy : 현재 커서라인 1줄 복싸
+y5y : 현재 커서라인에서 5줄 복사
+
+dd : 현재 커서 라인 잘라내기
+d5d : 현재 커서라인에서 5줄 잘라내기
+
+p : 복사나 잘라내기한 내용을 현재 커서 위치 밑줄에 붙여넣기 한다
+P : 복사나 잘라내기한 내용을 현재 커서 위치의 위줄에 붙여넣기한다.
+
+u : 이전으로 문자 돌리기
+
+i : 문자 전 위치부터 편집
+a : 문자 다음 위치부터 편집
+x : 현재 위치 문자 제거하고 편집
+
+
+:vs filename 파일을 세로방향으로 
+:sp filename 파일을 가로방향으로 열기
+
+shift+W 여러개 열어둔 문서끼리 이동
+
+:! ls vi를 종료하지 않고 명령어 실행 하기
+
+:se nu or :set number
