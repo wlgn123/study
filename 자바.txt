@@ -1,0 +1,600 @@
+AWT란
+  GUI를 구축하기 위한 클래스들의 모음
+    사용자 인터페이스 클래스
+    그래픽 처리 클래스
+
+    특징
+      각 OS마다 다르게 실행된다.
+
+    클래스 구조
+      컴포넌트
+        윈도우 환경의 컴포넌ㅌ느
+        java.awt 클래스로 객체 모델링
+
+       public void setForeground(Color c)
+       public void setBackground(Color c)
+       public void setFont(Font f)
+       void setSize(Dimension d)
+       void setBounds(int x, int y, int width, int height)
+       void setVisible(boolean b)
+
+Swing 이란
+  순수한 자바 언어로 지원되는 GUI 개발 도구
+
+    플랫폼에 독립적이다.
+    새로운 컴포넌트 제작이 쉽다.
+    AWT 컴포넌트 지원
+    어느 OS라도 화면구성이 달라지지않는다.
+
+    Swing class의 구조
+    java.lang.Object
+    lava.lang.Component
+    java.awt.Container
+    javax.swing.JComponent
+
+    public MainFrame(){
+      initComponents();
+    }
+    메인 프레임 생성자
+
+    priviate void initComponents() 컴포넌트의 초기화
+
+    public static void main(){
+      public void run(){
+        ~~~
+      }
+    }
+    메인 메소드
+
+    Event
+      윈도우의 컴포넌트를 Click할 때 발생하는 메시지
+      컴포넌트 -> Event 발생 -> Event Handler
+
+      Event 구성
+        Event Source
+          이벤트를 발생시키는 버튼, 스크롤바, 마우스, 키보드 등의 컴포넌트
+        Event Class
+          특정 컴포넌트에 따라 발생하는 Event를 분류한 것을 의미한다.
+        Event Handler
+          Event 처리를 위한 클래스
+
+
+  Event Handler 구성
+    Listener 인터페이스
+      각 이벤트를 처리하기 위해, 준비된 메서드를 선언한 인터페이스
+      이벤트 이름 + Listener
+
+      class MyActionListener implements ActionListener
+      {
+        public void actionPerformed(ActionEvent ae)
+        {
+          ~~
+        }
+      }
+
+Label 컨트롤
+  Label.getText() Label의 텍스트 반환
+  Label.setText(~~) Label에 텍스트 설정
+  Label.setAlignment(int align) Label의 텍스트 위치 결정
+  Label.getAlignment() Label의 텍스트 위치를 반환
+
+Button 컨트롤
+  Button.getLabel() 버튼 제목을 반환
+  Button.setLabel(String) 버튼 제목 변경
+
+
+종료 버튼 구현
+System.exit(0);
+
+
+
+텍스트 필드 컨트롤
+  텍스트필드.getText() 입력된 문자열 반환
+  텍스트필드.setText(문자열) 문자열str을 텍스트필드에 지정
+  텍스트필드.getSelectedText() 선택된 문자열 반환
+  텍스트필드.setEditable(boolean b) 텍스트필드에 입력 여부 결정
+
+Text Area  컨트롤
+  텍아.append(String) 기존에 문자열에 str문자열 추가
+  텍아.getColumns 열의 수 반환
+  텍아.getRows 행의 수 반환
+
+
+체크박스 컨트롤
+  체크박스.setText(String text) Checkbox의 text 지정
+  체크박스.getText() 체크박스의 텍스트 반환
+  체크박스.setSelect(Boolean b) 체크박스의 선택 여부 지정
+  체크박스.isSelected() 체크박스의 선택여부 반환
+
+라디오 버튼 컨트롤
+  라버.setText(텍스트) 라디오버튼에 텍스트 지정
+  라버.getTEXT() 라디오버튼에 텍스트 반환
+  라버.setSelected(Boolean) 라디오 버튼의 선택여부 지정
+  라버.isSelected() 라디오 버튼의 선택 여부 반환
+
+콤보박스 컨트롤
+  콤박.getItemCount() 아이템 수 반환
+  콤박.getItemAt(int index) index에 해당하는 아이템 반환
+  콤박.addItem(Obbject obj) obj를 콤보박스 아이템으로 추가
+  콤박.getSelectedItem() 선택된 아이템(Obj) 반환
+  콤박.getSelectedIndex() 선택된 아이템의 인덱스 반환
+
+  String str = null;
+  str = "회원의 직업은" + 콤박.getSelectedIndex().toString() + "입니다. \n"
+  텍아.setText(str);
+
+
+초이스 컨트롤
+  Drop dwon 리스트 구현할 때 사용
+  addItem() 메서드를 사용하여 drop-down 항목추가
+  메소드
+    countItems() 초이스 컨트롤의 아이템 수 반환
+    getItem(int index) 인덱스에 해당하는 아이템 반환
+    addItem(String item) Item을 초이스 item으로 추가
+    getSelectedItem() 선택된 아이템 반환
+    getSelectedIndex() 선택된 항목의 인덱스반환
+    select(int index) 인덱스에 해당하는 아이템 선택
+    select(String ) str에 해당하는 아이템 선택
+
+
+리스트 컨트롤
+  JList() 생성자
+  JList(Object[] listdata); 배열 형태의 데이터를 갖는 리스트 생성
+  Jlist(Vector<?> listData); 벡터를 데이터로 갖는 list생성
+  Jlist(ListModel dataModel) 데이터 모델을 갖는 list 생성
+
+  메소드
+    getSize() 리스트의 아이템 개수 반환
+    setListData(Object[] listdata) Object 클래스로 리스트에 추가
+    void setListData(Vector<?> listdata) Vector클래스로 리스트에 추가
+    int getSelectedIndex() 선택된 item의 index 반환
+    int[] getSelectedIndices() 다중선택 모드일때 선택된 item의 인덱스를 배열로반환
+    int setSelectedIndex() 선택된 아이템의 인덱스 지정
+    int[] setSelectedIndices() 다중 선택 모드일때 item의 인덱스 배열 지정
+
+리스트에 항목 add
+  Vector mv = new Vector();
+  int iListSize = 0;
+
+  iListSize = 리스트.getModel().getSize();
+  for(int idx = 0; idx<iListSize; idx++)
+    mv.addElement(리스트.getModel().getElementAt(idx));
+  mv.addElement(txtInput.getText());
+  리스트.setListData(mv);
+
+
+리스트의 항목 제거
+  Vector mv = new Vector();
+  int iList_index = 0;
+  int iListSize = 0;
+
+  iListSize = 리스트.getModel().getSize();
+  for(int idx = 0; i< iListSize; idx++)
+    mv.addElement(리스트.getModel().getElementAt(idx));
+
+  iList_index = 리스트.getSelectedIndex();
+  mv.removeElementAt(iList_index);
+  리스트.setListData(mv);
+
+Tab 컨트롤
+    int iTabindex = 0 ;
+    String strTabTitle = null;
+
+    iTabindex = jTabbedPane1.getSelectedIndex();
+    strTabTitle = jTabbedPane1.getTitleAt(iTabindex)
+    txtStateInfo.setText(strTabTitle+"정보를 볼 수 있습니다.")
+
+Progress Bar 컨트롤
+
+    버튼 클릭
+      ProgressBar_Value();
+
+    public void ProgressBar_Value()
+    {
+      try{
+        for(int idx = 0; idx <= 100; idx++)
+        {
+          jProgressBar1.setValue(idx);
+          Thread.sleep(100);
+          lblTitle.setText(idx+"% 검색중");
+        }
+      }catch(){
+        this.setTitle("검색중단");
+      }
+    }
+
+슬라이더 컨트롤
+  jSlider1StateChanged() Event
+    String strData = null;
+    int iValue = 0;
+    iValue = jSlider1.getValue();
+    strData = Integer.toString(iValue);
+    lblValue.setText(strData);
+
+테이블 컨트롤
+  Method
+    getColumnCount() 열의 수반환
+    getRowCount() 행의 수 반환
+    Object getValueAT(int row, int column) 해당 데이터 반환
+    getColumnName(int column) 열 제목 반환
+    getSelectedRow() 선택 행번호 반환
+    getSelectedColumn() 선택 열 번호 반환
+
+
+테이블 선택했을떄
+  int iCntRow = 0;
+  iCntRow = jTable1.getSelectedRow();
+
+  txtOrder.setText(jTable1.getValueAt(iCntRow,0).toString());
+
+인서트 버튼 클릭
+  int iCntRow = 0;
+
+  iCntRow = jTable1.getRowCount();
+  for(int idx = 0; idx<jTable1.getRowCount(); idx++){
+    if(jTable1.getValue(idx,0)==null){
+      iCntRow = idx;
+      break;
+    }
+  }
+  jTable1.setValueAt(txtOrder.getText(),iCntRow,0);
+
+ 업데이트 버튼
+ int iCntRow = 0;
+ iCntRow = jTable1.getSelectedRow();
+
+ jTable1.setValueAt(txtOrder.getText(),iCntROw,0);
+
+
+ 삭제 버튼
+ int iCntRow = 0;
+ iCntRow = jTable1.getSelectedRow();
+ for(int idx = 0; idx < jTable1.getColumnCount(); idx++)
+  jTable1.setValueAt(null,iCntRow,idx);
+
+
+트리 컨트롤
+  트리 구조
+    Root 노드
+    Child 노드
+    Parent 노드
+
+  Model
+    TreeModel
+      트리 노드 간의 관계를 알려주는 메서드가 정의되어 있는 인터페이스
+      데이터 보관 관리
+    DefaultTreeModel
+      트리모델의 모든 메서드 미리 구현
+    메소드
+      getChiled(Object parent,int index) 페런트 노드의 자식들중에 인덱스에 해당하는 자식 노드 반환
+      getChildCount(Object Parent) 자식 노드의 수 반환
+      isLeaf(Object node) 말단 노드 여부 반환
+
+  TreeSelectionModel
+    모드
+    SINGLE_TREE_SELECTION 한번에 한노드만 선택
+    CONTIGUOUS_TREE_SELECTION 연속된 여러 노드 선택
+    DISCONTIGUOUS_TREE_SELECTION 연속하지않은 여러 노드 선택
+  Method
+    setSelectionPath(TreePath path) 한번에 하나의 노드 선택
+    TreePath getSelectionPath() 선택한 노드의 path반환
+    setSelectionPaths(TreePath[] paths) 여러개의 노드를 다 선택
+    TreePath[] getSelectionPaths() 선택한 여러 노드의 path 반환
+
+  트리노드
+    노드의 상하관계 표현
+    DefaultMutableTreeNode
+    method
+      int getParent() 부모노드 인덱스 반환
+      int getChildAt() 자식 노드 index 반환
+      void add(MutableTreeNode newChild) 기존 tree의 말단 노드로 newChiled추가
+      void add(Mutable TreeNode newChild, int index)
+      기존의 tree의 index 위치에 newChild 추가
+      void remove(int index) 인덱스 위치에 노드 삭제
+      void remove(Mutable TreeNode aChild) aChild 노드 삭제
+      void removeAllChildren() 모든 child 노드 삭제
+      void insertNodeInfo(MutableTreeNode newChild,
+                          MutableTreeNode parent, int index)
+      패런트 노드의 index위치에 자식 노드로 newcHILD추가
+      void reload() 변경된 node를 포함한 젠처tree구조 반영
+      void nodeStructureChanged(TreeNode node) 노드의 하위노드만을 업데이트
+
+  트리노드가 선택되었을때
+  jTree1ValueChanged
+    DefaultMutableTreeNode node = (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
+    if(node == null) return;
+
+    lbl.Path.setText("Path : "+node.getUserObject()+"선택 !! \n");
+
+  노드의 -표시를 눌러 펼처진 것을 원상복귀 할때
+  jTree1TreeCollapsed(){
+    lblPath.setText("Path :" + evt.getPath() + "\n");
+  }
+  노드의 +표시를 눌러 child node들을 펼칠때
+  jTree1TreeExpanded(){
+    lblPath.setText("Path :"+evt.getPath)_+"\n");
+  }
+
+  노드 추가 및 삭제
+
+  멤버변수 선언
+
+    DefaultTreeModel 트리모델 = null
+    DefaultTreeSelectionModel = dft트리셀렉션모델 = new DefaultTreeSelectionModel();
+    DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("강의자료");
+    DefaultMutableTreeNode comNode = new DefaultMutableTreeNode("컴퓨터언어");
+
+    public MainFrame(){
+      initComponents();
+
+      dft트리셀렉션모델.setSelectionModel(1); //selection mode = SINGLE_SELECTION_MODE 지정
+
+      Vector<DefaultMutableTreeNode> mv = new Vector<DefaultMutableTreeNode>();
+      String[] objFolder = {"java","C#","JSP"};
+      for(int idx=0; idx< objFolder.length; idx++){
+        mv.add(new DefaultMutableTreeNode(objFolder[idx]));
+        comNode.add(mv.get(idx));
+      }
+
+      rootNode.add(comNode);
+      트리모델 = new DefaultTreeModel(rootNode);
+      jTree1.setModel(트리모델);
+      jTree1.setEditable(true);
+      jScrollPane1.getViewport().add(jTree1,null);
+    }
+
+    버튼 인서트 이벤트
+    {
+      int index = 0; //추가할 새폴더의 위치 값 저장
+
+      DefaultMutableTreeNode select_node;
+      select_node = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
+
+      DefaultMutableTreeNode newFolder = new DefaultMutableTreeNode("새폴더");
+      index = select_Node.getChildCount();
+      트리모델.insetNodeInfo(newFolder,select_Node,index);
+
+      jTree1.setModel(트리모델);
+      jTree1.setSelectionModel(트리셀렉션모델);
+      jScrollPane1.getViewport().add(jTree1,null);
+    }
+
+    버튼 딜리트 이벤트
+    {
+      DefaultMutableTreeNode select_Node;
+      select_Node = (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
+
+      트리모델.removeNodeFromParent(select_Node);
+
+      jTree1.setModel(트리모델);
+      jTree1.setSelectionModel(트리셀렉션모델);
+       jScrollPane1.getViewport().add(jTree1,null);
+    }
+
+대화상자(Dialog)
+기능
+  Pop ip 윈도우 형태로 메시지를 출력하거나
+  사용자 입력을 받는 기능을 구현할 때 사용한다.
+
+  Modal 형
+    대화상자를 Ok,Cancel 버튼을 사용하여 닫기 전에 다른 위도우로 전환 불가능하다.
+  Modeless 형
+    대화상자를 열어놓은 상태에서 다른 윈도우로 전환 가능
+
+  생성자
+  public Dialog(Frame parent);
+  public Dialog(Frame parent,boolean true(Modal),false(Modeless))
+  public Dialog(Frame parent,String title);
+  public Dialog(Frame parent,String title, boolean flag);
+
+  Method
+  public void show() 화면에 출력
+  public void dispose() Dialog 종료
+  public void setVisible(boolean b) 화면에 출력 여부 지정
+
+  버튼 클릭시 화면에 dialog 띄우기
+  {
+    int iWidth = 0;
+    int iHeight = 0;
+
+    iWidth = Integer.ParseInt(txtWidth.getText());
+    iHeight = Integer.ParseInt(txtheight.getText());
+
+    jDialog1.setLocation(350,350);
+    jDialog1.setSize(iWidth,iHeight);
+    jDialog1.show();
+  }
+
+
+Commo Dialog
+  기능
+      윈도우 프로그램에서 공통으로 사용한느 대화상자
+    클래스
+      파일열기 FileDialog
+      폰트선택 FontDialog
+      색상선택 ColorDialog
+      인쇄    PrintDialog
+      찾기,바꾸기  FindReplaceDialog
+
+FileDialog
+  기능
+    파일 열기 저장 기능 구현
+  형식
+    열기
+    저장
+
+  생성자
+    FileDialog(Frame parent)
+              Frame parent,String data
+              Frame parent, String data, int rw   rw: load,save
+    Method
+      void show
+      String getDirectory(); 선택한 파일이 위치한 폴더(경로) 반환
+      String getFile(); 선택한 파일명 반환
+      String setFile(String strFile); 파일명 지정
+
+jFileChooser1.showOpenDialog(null);
+jFileChooser1.showSaveDialog(null);
+
+Color Dialog
+  기능
+    Color 선택 기능 구현
+  Method
+    Color getColor();
+    void setColor(int red, int green, int blue)
+    void setColor(int c);
+    void setColor(Color objcolor);
+
+Color cData = new Color(0,0,255);
+jColorChooser1.showDialog(null,"색선택",cData);
+
+
+
+Frame
+  기능
+    윈도우 구조의 applicatiojn 구현
+    테두리 메뉴바, title 제공
+
+    메서드
+    String getTitle();
+    String setTile();
+    boolean isResizable(); 크기변경여부반환
+    void setMenueBar(MenuBar mnuBar) 메뉴바 등록
+    void setResizable(boolean b) 크기변경여부 지정
+
+
+  프레임 호출
+  {
+    프레임.setLocation(300,300);
+    프레임.setSize(300,200);
+    프레임.setVisible(true);
+  }
+
+메뉴
+  기능
+    폼에 표시할 메뉴를 나타내는 기능
+  구성
+    메뉴바
+    메뉴
+    메뉴아이템
+  메뉴바 클래스 객체 생성
+    MenuBar mnuBar = new MenuBar();
+    Menu m = new MenuBar("메뉴명");
+  메뉴 <- 메뉴 아이템 추가
+    MenuItem item = MenuItem("메뉴아이템명");
+    m.add(item);
+  메뉴바 -< 메뉴 추가
+    mnuBar.addMenu(m);
+  Frame <- MenuBar 추가
+  Frame fm = new Frame();
+  fm.add(mnuBar);
+
+
+  메뉴키프레스드
+    단축키 사용시
+
+  this.setTitle("원하는 타이틀명")
+
+
+Color 클래스
+  구성
+  Color(int r, int g, int b)
+  메소드
+  Color getColor() 현재설정된 Color 반환
+  void setColor(Color c) 새로운 컬러 설정
+  Color getBackgroound() 컴포넌트의 배경색 반환
+  Color getForeground() 컴포넌트의 전경색 반환
+  void setBackground(color c) 컴포넌트의 배경색 지정
+  void setForeground(Color c) 컴포넌트의 전경색 지정
+
+Graphic Class
+  기능
+    도형 그리기 구현 기능
+
+  메소드
+    draw3DRect(),fill3DRect() 입체 사각형 그리기, 채우기
+    drawLine()      선그리기
+    drawRect(),fillRect() 사각형그리기,채운사각형그리기
+    drawOval(),fillOval() 타원그리기, 채운타원그리기
+    drawArc,fillArc()  부채꼴 그리기, 채운부채꼴그리기
+    drawPolygon(),fillPolygon() 다각형 그리기, 채운다각형그리기
+    drawPolyline()  연결선그리기
+    drawString()  문자쓰기
+    drawRoundRect(),fillRoundRect() 둥근 사각형 그리기, 둥근 사각형 채우가
+    drawImage() 이미지그리기
+
+
+멤버변수 지정
+  int iMenu_idx = 0;
+  int ix,iy, width,height;
+  Color cData = new Color(0,0,255);
+
+  public void paint(Graphics g)
+  {
+    super.paintComponents(g);
+    switch(iMenu_idx){
+      case 31:
+        g.drawLine(ix,iy,250,250);
+        break;
+      case 32:
+        g.drawOval(ix,iy,width,height);
+        g.fillOval(ix,iy,width,height);
+    }
+  }
+메뉴 아이템 클릭시
+  this.setTitel("Line메뉴 클릭");
+  ix = 150;
+  iy = 150;
+  iMenu_idx = 31;
+  this.repaint();
+
+Pop up 메뉴
+  구성
+    메뉴바
+    메뉴
+    메뉴 아이템
+
+  메뉴바 클래스 객체 생성
+    MenuBar mnuBar = new MenuBar();
+
+메인프레임
+  jPopupMenu1.add(mnuFileOpen); //Popup 메뉴에 mnuFileOpen추가
+  jPopupMenu1.add(mnuFileSave);
+  jPopupMenu1.addSeparator();
+  jPopupMenu1.add(mnuExit);
+
+폼마우스클릭 이벤트
+  if(evt.getButton() == 3)    // 1/2/3 (left,middle,right)
+    jPopupMenu1.show(this.evt.getX(),evt.getY());
+
+Font 클래스
+  기능
+    글꼴의 속성이나 스타일 지정
+  구성
+    Font(String strFontName, int style, int size);
+
+멤버 변수 선언
+
+Font objFont;
+String strData = null;
+
+메뉴 선택시
+ ix = 10;
+ iy = 100;
+ objFont = new Font("Arial", Font.BOLD,20);
+ iMenu_idx = 41;
+ this.repaint();
+
+public void paint(Graphics g)
+{
+  super.paintComponents(g);
+  switch(iMenu_idx){
+    switch(iMenu_idx)
+    {
+      case 41:
+        strData = "Arial font";
+        g.setFont(objFont);
+        g.drawString(strdata,ix,y);
+    }
+  }
+}
