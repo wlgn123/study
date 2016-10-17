@@ -677,6 +677,7 @@ php -v
 php 버전확인.
 
 mysqld_safe & 엔터
+mysqld_safe 백그라운드실행
 mysql 가동
 
 ./apachectl start 엔터
@@ -697,3 +698,48 @@ phpmyadmin/
 
 mbstring 설치
 yum install php-mbstring -y
+
+netstat -an 명령으로 포트번호 확인가능
+
+dns 서비스 설치
+yum install bind
+service named start
+
+mysql 설치
+yum install mysql
+yum install mysql-server
+
+php 설치
+yum install php
+yum install php-mysql
+
+wget 링크
+링크를통해 다운로드 하기.
+
+service httpd start
+service mysqld start
+service mysqld_safe start
+
+기본 다큐먼트 루트
+/var/www/html/
+
+유저애드 -d 홈디렉토리지정 유저아이디
+useradd -d /home/b201344075 b201344075
+passwd b201344075
+
+서비스 포트 목록 보기
+/etc/services
+찾기
+/etc/services | grep ft
+
+현재 실행중인
+프로세스 확인
+ps -edf | grep
+
+mysql 명령어
+mysql -u root -p
+비밀번호
+
+FTP 포트 번호 21
+  능동형
+  수동형
