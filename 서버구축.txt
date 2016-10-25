@@ -743,3 +743,34 @@ mysql -u root -p
 FTP 포트 번호 21
   능동형
   수동형
+  
+정답
+nmap localhost  port open status check
+log syslogd
+apache httpd
+Bind named
+smtp sendmail	pop3(qpopper 를 설치)를 같이 이용해야 outlook과같은것과 연동하여 메일을 쉽게 이용 가능 (port 110)
+ftp vsftpd(proftpd)
+scheduler crond - crontab -e 설정 -l 목록  분 시 일 월 요일 process 요일은 0부터
+at 일회용 스케줄러 
+ssh sshd
+
+dns
+클라이언트의 hosts파일 확인가능
+있다면 바로 연결, 없다면 dns에 확인.
+있다면 해당 주소로 이동
+
+hosts 가 잘못 되어있다면 피싱사이트나, 잘못된 사이트로 이동될 수 있다.
+
+
+editplus 원격 접속을 하기위한 조건
+21포트의 ftp서비스를 이용하여 원격 접속가능
+포트 개방
+
+ftp,telnet 은 보안상 위험하다
+sftp, ssh 사용이 좋다
+둘 다 22포트 사용
+
+https => 443포트 사용
+^- SSL사용(구간암호화)
+
