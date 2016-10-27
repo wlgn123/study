@@ -299,3 +299,40 @@ response.sendRedirect
 forward 액션방식의 호출
 파라메터를 넘길 수 있다.
 >>>>>>> remotes/origin/HEAD
+
+<jsp:useBean id="인스턴스명" scope="생존범위" class="패키지/클래스명" />
+
+<jsp:setProperty name="mybean" property="userid" />
+<jsp:setProperty name="객체명" property="userpassword" />
+또는
+<%
+ mybean.setUserid(request.getParameter("username"));
+%>
+
+<jsp:getProperty name="mybean" property="username" />
+
+또는
+<%= mybean.getUsername() %>
+
+JDBC 연결
+
+1. JDBC 드라이버 로드 
+	class.forName("com.mysql.jdbc.Driver");
+2. 데이터베이스 연결
+	DriverManager.getConnection 사용
+	java.sql.Connection
+	url mysql://localhost:[3306]/db명
+	계정 아이디 및 비밀번호
+	
+3. Statement(쿼리 객체) 생성
+	Statement 객체
+	PreparedStatement 객체
+	사용가능 (Statement 완벽한 쿼리문장일경우, PreparedStatement 완성되지않은 쿼리문장일경우)
+4. SQL문 전송
+	excuteQuery();
+	executeUpdate();
+5, 결과받기
+	java.sql.ResultSet`
+6. 연결해제
+	java.sql.Connection
+
