@@ -818,3 +818,75 @@ default어쩌고저쩌고 해서 밑에 번호가 있다.
 $ yum -y groupinstall "X Window System" "Desktop" "Fonts"
 
 $ startx
+
+
+
+OS
+window
+linux(ubuntu)
+unix(hpux,aix,solaris)
+mac osx
+모바일os
+Android,Ios,Bada,WinCE
+
+명령어
+
+mv/ls/cd/pwd/mkdir/rm/cp
+
+top who rpm ln kill
+ps cat wall aliase netstat
+vi man sudo crontab free
+df yum exit export su
+chmod wget mount(umount) dd
+useradd unzip echo sh
+passwd grep find swapon
+history service more mail
+ping
+
+만약 어떠한 오류로 갑자기 서버용량이 꽉찼다면 해결할 방법
+0.ps를 이용 어떠한 프로세스가 도는지 확인한다.
+1.rm으로 지운다.(완전 불필요한 내용일경우 가능)
+2.mv(해당 데이터를 이용하고있던 프로세스들이 오류를 일으킨다.)
+3.ln -s(cp 후 심볼링크를 냅두어 바꾼다.)
+
+find 명령어
+
+
+ln 명령어
+하드링크는 다른 드라이브로 넘어가지못함 그냥쓰면됨
+심볼링크 -s 붙인다.
+
+/ 30% 30g
+/data 90% 300g
+/data2 0% 500g
+
+/data에서
+/data2를 써야될 경우
+
+/data의 내용을 /data2로 옮긴후
+cp
+파티션 명을 바꾼다.
+
+vi
+fstab
+에서 파티션이름을 변경할 수 있다.
+
+
+file service
+
+telnet 10.1.1.1 23
+
+웹서버 접속가능한지 확인
+putty로 telnet 10.1.1.1 80
+html코드 반환
+하지만 쉘을 얻고 http를 실행하는 거기 때문에
+외부 방화벽 (인바운드)로 인해 차단이 되는건지 확인하기 어렵다.
+
+클라이언트에서 cmd를 이용 telnet 10.1.1.1 80
+을 이용 할 경우는 외부에서 접속하므로
+외부방화벽으로 차된이 되어지는지 확인이 가능하다.
+cmd 명령어를 친 후
+서버의 netstat 을 이용하여 ip가 들어오는지 확인 가능
+
+awk
+
