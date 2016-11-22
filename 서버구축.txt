@@ -775,3 +775,30 @@ cpu load average
 memory free
 rate of cpu use 
 수동으로 넣어줘야한다. cfgmaker 후에
+
+
+cpu load average
+memory free
+rate of cpu use 
+수동으로 넣어줘야한다. cfgmaker 후에
+
+conf.d 밑에
+deny from all 
+모든 아이피를 차단
+Allow from 127.0.0.1
+해당 아이피만 승인
+
+서버 트래픽을 확인할 때
+평균적 수치 보다는
+피크타임 버틸 수 있는지가 중요
+(전체적인 수치를 확인)
+
+침입탐지 시스템
+비정상 패턴을 감지
+
+Disk Partition Usage
+network
+httpd 트래픽
++
+ snmpwalk -v 1 -c public localhost dskTable
+
