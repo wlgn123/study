@@ -335,4 +335,60 @@ JDBC 연결
 	java.sql.ResultSet`
 6. 연결해제
 	java.sql.Connection
+	
+	커스텀태그
+
+태그파일 : .tag
+몇가지 제약조건을 제외하고는 jsp파일과 동일하다.
+WEBINF\tag 폴더에 저장.
+
+jsp파일 : jsp파일에서 taglib 지시어를 설정한 후 커스텀 태그 사용
+
+
+태그파일의 구조
+taglib
+include 
+tag (태그를 만들때)
+attribute 작성하는 태그에 포함될 속성
+variable 태그 내용에 필요한 표현 언어 변수를 선언한다.
+
+실습
+print.tag
+<%@ tag body-content="empty" pageEncoding="UTF-8" %>
+	body-content 가 empty 면 <tag> </tag> 사이에 아무 값이 없어도된다. 라는 지시
+태그출력 메시지 Hello!
+
+print.tag를 사용하는 jsp파일
+
+PrintTagTest.jsp
+	//tag파일 을 사용할경우 tagdir 을 사용
+<%@ taglib tagdir="/WEB-INF/tags" prefix="mytag" %>
+<mytag:print/>
+
+태그 핸들러
+커스텀 태그를 처리하는 객체
+태그 파일과 자바 클래스를 이용하여
+커스텀 태그를 구현하는 방법이다.
+
+SimpleTag 인터페이스가 제공되면서 SimpleTagSupport 클래스를 상속받아 이전보다 쉽게
+구현 가능하다.
+
+구성요소
+
+태그 핸들러 클래스
+태그 라이브러리 기술자(tld)
+taglib 지시어
+
+void doTag()
+
+JspFragment getJspBody()
+
+JspContext getJspContext()
+
+
+tld를 사용할 때에는
+
+<%@ taglib uri="tld파일경로" prefix="" %>
+
+
 
