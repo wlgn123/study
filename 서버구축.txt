@@ -770,6 +770,7 @@ env LANG=c /usr/bin/mrtg /etc/mrtg/mrtg.cfg
 /etc/mrtg/mrtg.cfg
 
 cat /etc/cron.d/mrtg
+*/5 * * * * root LANG=C LC_ALL=C /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
 
 cpu load average
 memory free
