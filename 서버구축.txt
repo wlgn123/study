@@ -759,18 +759,71 @@ mrtg = /etc/mrtg/설정파일이있다.
 mrtg.cfg에 설정파일이있다.
 프로그램을 이용해서 만들 것
 cfgmaker를 이용하여 cfg를 만들 것이다.
+
+mrtg.cfg 자동 초기화
 cfgmaker —global ‘WorkDir: /home/inhatc2016/www/mrtg’ --output
 /etc/mrtg/mrtg.cfg public@localhost
 
+mrtg.cfg 파일 수정
+
+WorkDir: ~~~       
+LoadMIBs: /usr/share/snmp/mibs/UCD-SNMP-MIB.txt,/usr/share/snmp/mibs/TCP-MIB.txt  <-- 추가
+
+CPU 사용량
+Target[localhost.cpu]:ssCpuRawUser.0&ssCpuRawIdle.0:public@127.0.0.1
+RouterUptime[localhost.cpu]: public@127.0.0.1
+MaxBytes[localhost.cpu]: 100
+Title[localhost.cpu]: CPU Load
+PageTop[localhost.cpu]: <H1>Active CPU Load %</H1>
+Unscaled[localhost.cpu]: ymwd
+ShortLegend[localhost.cpu]: %
+YLegend[localhost.cpu]: CPU Utilization
+Legend1[localhost.cpu]: User CPU in % (Load)
+Legend2[localhost.cpu]: Idle CPU in % (Load)
+Legend3[localhost.cpu]:
+Legend4[localhost.cpu]:
+LegendI[localhost.cpu]: User
+LegendO[localhost.cpu]: Idle
+Options[localhost.cpu]: growright,nopercent
+
+메모리 사용량
+Target[localhost.mem]: memAvailReal.0&memAvailSwap.0:public@localhost
+PageTop[localhost.mem]: <H1>Free Memory</H1>
+WorkDir: /var/www/mrtg
+Options[localhost.mem]: nopercent,growright,gauge,noinfo
+Title[localhost.mem]: Free Memory
+MaxBytes[localhost.mem]: 10000000000
+kMG[localhost.mem]: k,M,G,T,P,X
+YLegend[localhost.mem]: bytes
+ShortLegend[localhost.mem]: bytes
+Legend1[localhost.mem]: Real free
+Legend2[localhost.mem]: Swap free
+LegendI[localhost.mem]: Real Free :
+LegendO[localhost.mem]: Swap Free :
+
+Loopback
+Target[127.0.0.1_1]: 1:public@127.0.0.1:
+SetEnv[127.0.0.1_1]: MRTG_INT_IP="127.0.0.1" MRTG_INT_DESCR="lo"
+MaxBytes[127.0.0.1_1]: 1250000
+Title[127.0.0.1_1]: Traffic Analysis for local loopback
+PageTop[127.0.0.1_1]: <h1>Traffic Analysis for local loopback</h1>
+
+index 파일 자동생성
 indexmaker –output=/home/inhatc2016/www/mrtg/index.html
 /etc/mrtg/mrtg.cfg
 
-env LANG=c /usr/bin/mrtg /etc/mrtg/mrtg.cfg
+MRTG 테스트
+env LANG=C /usr/bin/mrtg /etc/mrtg/mrtg.cfg
 
+MRTG  CFG 위치
 /etc/mrtg/mrtg.cfg
 
+MRTG 크론탭 위치
 cat /etc/cron.d/mrtg
+
+5분단위 그래프 갱신
 */5 * * * * root LANG=C LC_ALL=C /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
+
 
 cpu load average
 memory free
